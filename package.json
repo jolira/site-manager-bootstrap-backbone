@@ -1,13 +1,13 @@
 {
-    "name":"stite-manager-bootstrap-backbone",
+    "name":"site-manager-bootstrap-backbone",
     "version":"0.0.1",
-    "description":"Building Scalable WebApps for the Site-Manager using Backbone.js and Twitter Bootstrap",
+    "description":"Reusable components for Web-Apps using Backbone and Twitter Bootstrap",
     "keywords":["site-manager", "webapp"],
     "contributors": [
         "Joachim Kainz <jfk@jolira.com> (http://www.jolira.com)"
     ],
     "repository":{
-        "url":"https://github.com/jolira/stite-manager-bootstrap-backbone.git",
+        "url":"https://github.com/jolira/site-manager-bootstrap-backbone.git",
         "type":"git"
     },
     "bin": {
@@ -20,7 +20,7 @@
     },
     "bugs":{
         "mail":"dev@jolira.com",
-        "url":"http://github.com/jolira/stite-manager-bootstrap-backbone/issues"
+        "url":"http://github.com/jolira/site-manager-bootstrap-backbone/issues"
     },
     "main":"index",
     "engines":{
