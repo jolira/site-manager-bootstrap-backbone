@@ -23,12 +23,19 @@
                 $("#main-nav").append(item.render().el);
                 $('.dropdown-toggle').dropdown();
             }
-        }; // this is the reason why this file has to be included second
+        };
 
         var NavBar = Backbone.View.extend({
-            el:".navbar",
+            template: app.getTemplate("script[id='navbar']"),
             events:{
                 "focus #global-search":"popupResults"
+            },
+            render: function() {
+                var title = $("title").text();
+                $(this.el).html(this.template({title: title}));
+                $(this.el).addClass("navbar");
+                $(this.el).addClass("navbar-fixed-top");
+                return this;
             },
             popupResults:function () {
                 $("#global-search").popover({
@@ -37,8 +44,9 @@
                 });
                 return false;
             }
-        });
+        }),
+            navbar = new NavBar();
 
-        return new NavBar();
+        $("body").prepend(navbar.render().el);
     });
 })($, _, Backbone, window["jolira-app"]);

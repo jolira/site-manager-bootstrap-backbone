@@ -20,10 +20,10 @@
                 defaults.tailingScripts.push(dir);
             });
         defaults.htmlFiles = [
-            path.join(templates, "navbar.html"),
             path.join(templates, "container.html")
         ];
         defaults.templateFiles = [
+            path.join(templates, "navbar.html"),
             path.join(templates, "navbar-item.html"),
             path.join(templates, "navbar-dropbox.html"),
             path.join(templates, "sidebar.html"),
