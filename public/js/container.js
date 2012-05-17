@@ -14,29 +14,15 @@
         }
     };
 
-    var AppRouter = Backbone.Router.extend({
-/*
-        routes:{
-            "xxx":"example",
-            "*actions":"renderHome"
-        },
-        renderHome:function () {
-            var home = app.getHomeView("#main-content");
+    // Initialize the components
+    $(function(){
+        var Router = Backbone.Router.extend({});
+        
+        app.router = new Router();
+        app.initializers.forEach(function(initializer) {
+            initializer(app, "#main-content");
+        });
 
-            home.render();
-            app.tabs.add("xxx", "yyyy", "<h1>zzzz</h1>");
-        },
-        example: function () {
-            $("#main-content").html("<h1>DONE!!!!</h1>");
-        }
-*/
+        Backbone.history.start();
     });
-
-    // Initiate the router
-    app.router = new AppRouter();
-    app.initializers.forEach(function(initializer) {
-        initializer(app, "#main-content");
-    });
-
-    Backbone.history.start();
 })($, _, Backbone, window["jolira-app"]);

@@ -24,11 +24,10 @@
             path.join(templates, "container.html")
         ];
         defaults.templateFiles = [
-            path.join(templates, "navbar.html"),
-            path.join(templates, "customer.html"),
+            path.join(templates, "navbar-item.html"),
+            path.join(templates, "navbar-dropbox.html"),
             path.join(templates, "sidebar.html"),
-            path.join(templates, "tab.html"),
-            path.join(templates, "menu-item.html")
+            path.join(templates, "tab.html")
         ];
         [twitterbootstrap, pubdir].forEach(function (dir) {
             defaults["public"].unshift(dir);
