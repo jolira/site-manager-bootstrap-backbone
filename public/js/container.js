@@ -14,15 +14,17 @@
         }
     };
 
-    // Initialize the components
+    // Initialize the components (only once)
     $(function(){
         var Router = Backbone.Router.extend({});
 
         app.router = new Router();
+
         app.initializers.forEach(function(initializer) {
             initializer(app, "#main-content");
         });
 
+        delete app.initializers;
         Backbone.history.start();
     });
 })($, _, Backbone, window["jolira-app"]);
