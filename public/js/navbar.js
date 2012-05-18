@@ -2,19 +2,41 @@
     "use strict";
 
     app.initializers.push(function (app) {
+        var NavBar = Backbone.View.extend({
+                template:app.getTemplate("script[id='navbar']"),
+                events:{
+                    "focus #global-search":"popupResults"
+                },
+                render:function () {
+                    var title = $("title").text();
+                    $(this.el).html(this.template({title:title}));
+                    $(this.el).addClass("navbar");
+                    $(this.el).addClass("navbar-fixed-top");
+                    return this;
+                },
+                popupResults:function () {
+                    $("#global-search").popover({
+                        placement:"bottom",
+                        content:"test"
+                    });
+                    return false;
+                }
+            }),
+            navbar = new NavBar();
+
         app.menu = {
-            add: function(title, handler) {
+            add:function (title, handler) {
                 var NavbarItem = Backbone.View.extend({
-                    tagName: "li",
-                    template: app.getTemplate("script[id='navbar-item']"),
-                    events: {
-                        "click": "click"
+                    tagName:"li",
+                    template:app.getTemplate("script[id='navbar-item']"),
+                    events:{
+                        "click":"click"
                     },
-                    render: function() {
-                        $(this.el).html(this.template({title: title}));
+                    render:function () {
+                        $(this.el).html(this.template({title:title}));
                         return this;
                     },
-                    click: function() {
+                    click:function () {
                         return handler();
                     }
                 });
@@ -24,28 +46,6 @@
                 $('.dropdown-toggle').dropdown();
             }
         };
-
-        var NavBar = Backbone.View.extend({
-            template: app.getTemplate("script[id='navbar']"),
-            events:{
-                "focus #global-search":"popupResults"
-            },
-            render: function() {
-                var title = $("title").text();
-                $(this.el).html(this.template({title: title}));
-                $(this.el).addClass("navbar");
-                $(this.el).addClass("navbar-fixed-top");
-                return this;
-            },
-            popupResults:function () {
-                $("#global-search").popover({
-                    placement:"bottom",
-                    content:"test"
-                });
-                return false;
-            }
-        }),
-            navbar = new NavBar();
 
         $("body").prepend(navbar.render().el);
     });
